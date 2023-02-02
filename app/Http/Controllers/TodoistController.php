@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class TodoistController extends Controller
 {
     public function getAccess(Request $req) {
-        echo $req;
+        echo [$req->input('code'), $req->input('state')];
     }
 }
