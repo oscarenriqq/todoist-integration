@@ -20,4 +20,8 @@ class TodoistController extends Controller
 
         dd($response);
     }
+
+    public function exchangeToken(Request $req) {
+        echo json_encode([$req->input('access_token'), $req->input('token_type')]);
+    }
 }

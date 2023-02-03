@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/todoist/redirect', [TodoistController::class, 'authRedirect']);
+
+Route::get('/todoist/exchange', [TodoistController::class, 'exchangeToken']);
