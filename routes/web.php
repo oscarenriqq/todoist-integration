@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BaseController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +20,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function() {
-    return 'Hi from laravel';
+// Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
+
+// Route::get('register', [AuthController::class, 'showRegisterForm']);
+Route::post('register', [AuthController::class, 'register']);
+
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth:api'])->group(function() {
+    Route::get('/home', [BaseController::class, 'home']);
+});
+
+Route::get('/index', function() {
+    return csrf_token();
 });
