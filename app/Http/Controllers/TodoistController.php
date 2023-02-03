@@ -18,6 +18,6 @@ class TodoistController extends Controller
             'code'          => $req->input('code'),
         ]);
 
-        dd($response);
+        echo json_encode([$response->body()]);
     }
 }
