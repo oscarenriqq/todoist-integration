@@ -14,14 +14,10 @@ class TodoistController extends Controller
         $response = Http::post('https://todoist.com/oauth/access_token', [
             'client_id'     => env('TODOIST_CLIENT_ID'),
             'client_secret' => env('TODOIST_CLIENT_SECRET'),
-            'redirect_uri'  => env('TODOIST_EXCHANGE_REDIRECT_URI'),
+            'redirect_uri'  => env('TODOIST_REDIRECT_URI'),
             'code'          => $req->input('code'),
         ]);
 
         dd($response);
-    }
-
-    public function exchangeToken(Request $req) {
-        echo json_encode([$req->input('access_token'), $req->input('token_type')]);
     }
 }
