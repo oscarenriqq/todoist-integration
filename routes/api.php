@@ -25,9 +25,8 @@ Route::middleware('auth:api')->group(function() {
 
     Route::get('/todoist/auth', [TodoistController::class, 'getToken']);
 
+    Route::get('/todoist/redirect', [TodoistController::class, 'authRedirect']);
 });
-
-Route::get('/todoist/redirect', [TodoistController::class, 'authRedirect']);
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
